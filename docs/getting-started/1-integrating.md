@@ -39,10 +39,13 @@ using Squirrel;
 **`static void Main()`**
 
 ~~~cs
-using (var mgr = new UpdateManager("C:\\Projects\\MyApp\\Releases"))
+Task.Run(async () =>
 {
-    await mgr.UpdateApp();
-}
+    using (var mgr = new UpdateManager(@"C:\\Projects\\MyApp\\Releases"))
+    {
+        await mgr.UpdateApp();
+    }
+});
 ~~~
 
 The code above demonstrates the most basic update mechanism using the `UpdateApp()` method in an asynchronous task. The actions it takes will be discussed further in section [Updating](5-updating.md).
